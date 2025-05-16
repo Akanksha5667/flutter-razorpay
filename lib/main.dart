@@ -79,14 +79,27 @@ class _MyHomePageState extends State<MyHomePage> {
           child: (OutlinedButton(
             onPressed: () {
               var options = {
-                'key': 'rzp_test_1DP5mmOlF5G5ag',
-                'amount': 1000,
-                //1000=10rs
+                'key': 'rzp_test_1DP5mmOlF5G5ag', // Replace with your key
+                'amount': 1000, // in paise = ₹10
+                'currency': 'INR',
                 'name': 'Acme Corp.',
                 'description': 'Fine T-Shirt',
                 'prefill': {
                   'contact': '8888888888',
-                  'email': 'test@razorpay.com'
+                  'email': 'test@razorpay.com',
+                },
+                'method': {
+                  'netbanking': false,
+                  'card': false,
+                  'upi': true,
+                  'wallet': false,
+                },
+                'external': {
+                  'wallets': [
+                    'paytm',
+                    'phonepe',
+                    'gpay'
+                  ] // This triggers UPI intent
                 }
               };
               razorpay.open(options);
